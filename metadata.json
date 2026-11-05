@@ -1,8 +1,6 @@
 {
-  "name": "Bara IDE — AETHER-Ω",
-  "description": "Bara IDE — AETHER-Ω V4.11. Paraconsistent Belnap 4-valued logic IDE and visual kernel architecture for the Bara programming language.",
+  "name": "Bara IDE",
+  "description": "Mock visual de Bara IDE.",
   "permissions": [],
-  "capabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
+  "capabilities": []
 }

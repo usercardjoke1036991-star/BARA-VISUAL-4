@@ -1,6 +1,6 @@
 {
   "name": "bara-visual",
-  "version": "4.11.0",
+  "version": "0.1.0",
   "description": "Bara IDE",
   "type": "module",
   "scripts": {
