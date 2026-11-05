@@ -412,15 +412,17 @@ const SCREENS = {
       ${COMPOSER_HTML}
     </section>
     <aside class="editor-pane">
-      <div style="padding:10px 12px;border-bottom:1px solid var(--border);background:#122018;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-shrink:0">
-        <div style="font-size:14px">
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);background:#122018;display:flex;flex-direction:column;gap:8px;flex-shrink:0">
+        <div style="font-size:14px;white-space:nowrap">
           <strong>Cambio propuesto</strong> · <span class="mono">HELLO.bara</span>
           · <span style="color:var(--green-soft)">+3</span> <span style="color:#c99">−1</span>
-          · <span class="chip" style="margin-left:6px">Verificado por el kernel ✓</span>
         </div>
-        <div class="row">
-          <button class="btn btn-ghost">Rechazar</button>
-          <button class="btn btn-primary">Aceptar</button>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <span class="chip" style="white-space:nowrap">Verificado por el kernel ✓</span>
+          <div class="row" style="flex-shrink:0;gap:6px;margin-left:auto">
+            <button class="btn btn-ghost" style="padding:5px 10px">Rechazar</button>
+            <button class="btn btn-primary" style="padding:5px 10px">Aceptar</button>
+          </div>
         </div>
       </div>
       ${buildTabbar(true)}
@@ -453,10 +455,12 @@ const SCREENS = {
         <div class="gutter"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div></div>
         <div class="code-body"><div>funcion main() {</div><div>  variables x = 10</div><div>  si x &gt; 5 {</div><div>    mostrar("Bara IDE")</div><div>    registrar("ok")</div><div>  }</div><div>}</div></div>
       </div>
-      <div class="toast" id="toast-05" style="bottom:24px;left:50%;transform:translateX(-50%)">
-        <span>Cambio aplicado a <span class="mono">HELLO.bara</span> · respaldo guardado</span>
-        <button type="button" class="btn btn-ghost" style="padding:4px 10px" id="toast-deshacer-btn">Deshacer</button>
-        <button type="button" id="toast-close-btn" class="icon-close-btn" aria-label="Cerrar notificación">${SVG.close(16)}</button>
+      <div class="toast" id="toast-05" style="bottom:24px;left:50%;transform:translateX(-50%);width:calc(100% - 24px);justify-content:space-between">
+        <span style="min-width:0;overflow:hidden;text-overflow:ellipsis">Cambio aplicado a <span class="mono">HELLO.bara</span> · respaldo guardado</span>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;margin-left:auto">
+          <button type="button" class="btn btn-ghost" style="padding:4px 10px;flex-shrink:0" id="toast-deshacer-btn">Deshacer</button>
+          <button type="button" id="toast-close-btn" class="icon-close-btn" aria-label="Cerrar notificación">${SVG.close(16)}</button>
+        </div>
       </div>
     </aside>`
   },
@@ -557,29 +561,23 @@ const SCREENS = {
       <div style="flex:1;display:flex;min-height:0;min-width:0">
         <div style="flex:1.35;min-width:0;display:flex;flex-direction:column;border-right:1px solid var(--border);background:#070a0e">
           <div style="padding:10px 16px;font-size:14px;color:var(--text)">Lienzo</div>
-          <div style="flex:1;display:flex;align-items:center;justify-content:center;position:relative;padding:0 16px;min-width:0">
-            <svg width="100%" height="120" viewBox="0 0 600 120" preserveAspectRatio="none" style="position:absolute;left:0;top:50%;transform:translateY(-50%);pointer-events:none;padding:0 16px">
-              <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3f6d4b"/></marker></defs>
-              <line x1="125" y1="60" x2="175" y2="60" stroke="#3f6d4b" stroke-width="2" marker-end="url(#arrow)"/>
-              <line x1="275" y1="60" x2="325" y2="60" stroke="#3f6d4b" stroke-width="2" marker-end="url(#arrow)"/>
-              <line x1="425" y1="60" x2="475" y2="60" stroke="#3f6d4b" stroke-width="2" marker-end="url(#arrow)"/>
-            </svg>
-            <div style="display:flex;justify-content:space-evenly;align-items:center;gap:8px;width:100%;position:relative;z-index:1;min-width:0">
-              <div style="flex:1 1 0;min-width:0;max-width:140px;padding:10px 8px;background:#183120;border:2px solid #3f6d4b;border-radius:12px;text-align:center;overflow:hidden">
-                <div style="font-size:14px;font-weight:600;color:#84a989;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">FUENTE</div>
-                <div class="mono" style="font-size:14px;margin-top:4px;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">fuente_in</div>
+          <div style="flex:1;display:flex;align-items:center;justify-content:center;position:relative;padding:12px 10px;min-width:0;overflow:auto">
+            <div style="display:grid;grid-template-columns:minmax(115px,160px) minmax(158px,185px);gap:10px;justify-content:center;align-items:stretch;width:100%;position:relative;z-index:1;min-width:0">
+              <div style="min-width:0;padding:10px 8px;background:#183120;border:2px solid #3f6d4b;border-radius:12px;text-align:center">
+                <div style="font-size:14px;font-weight:600;color:#84a989;letter-spacing:.02em">FUENTE</div>
+                <div class="mono" style="font-size:14px;margin-top:4px;color:#fff">fuente_in</div>
               </div>
-              <div style="flex:1 1 0;min-width:0;max-width:140px;padding:10px 8px;background:var(--panel);border:1px solid var(--border);border-radius:12px;text-align:center;overflow:hidden">
-                <div style="font-size:14px;font-weight:600;color:#fff;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">TRANSFORMAR</div>
-                <div class="mono" style="font-size:14px;margin-top:4px;color:var(--green-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">transformar_saludo</div>
+              <div style="min-width:0;padding:10px 8px;background:var(--panel);border:1px solid var(--border);border-radius:12px;text-align:center">
+                <div style="font-size:14px;font-weight:600;color:#fff;letter-spacing:.02em">TRANSFORMAR</div>
+                <div class="mono" style="font-size:14px;margin-top:4px;color:var(--green-soft)">transformar_saludo</div>
               </div>
-              <div style="flex:1 1 0;min-width:0;max-width:140px;padding:10px 8px;background:#1b3d26;border:2px solid #528960;border-radius:12px;text-align:center;overflow:hidden">
-                <div style="font-size:14px;font-weight:600;color:#fff;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">GUARDIA</div>
-                <div class="mono" style="font-size:14px;margin-top:4px;color:#84a989;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">guardia_firma</div>
+              <div style="min-width:0;padding:10px 8px;background:#1b3d26;border:2px solid #528960;border-radius:12px;text-align:center">
+                <div style="font-size:14px;font-weight:600;color:#fff;letter-spacing:.02em">GUARDIA</div>
+                <div class="mono" style="font-size:14px;margin-top:4px;color:#84a989">guardia_firma</div>
               </div>
-              <div style="flex:1 1 0;min-width:0;max-width:140px;padding:10px 8px;background:var(--panel);border:1px solid var(--border);border-radius:12px;text-align:center;overflow:hidden">
-                <div style="font-size:14px;font-weight:600;color:#fff;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SUMIDERO</div>
-                <div class="mono" style="font-size:14px;margin-top:4px;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">sumidero_out</div>
+              <div style="min-width:0;padding:10px 8px;background:var(--panel);border:1px solid var(--border);border-radius:12px;text-align:center">
+                <div style="font-size:14px;font-weight:600;color:#fff;letter-spacing:.02em">SUMIDERO</div>
+                <div class="mono" style="font-size:14px;margin-top:4px;color:#fff">sumidero_out</div>
               </div>
             </div>
           </div>

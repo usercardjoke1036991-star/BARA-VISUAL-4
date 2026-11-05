@@ -151,9 +151,10 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .diff-del { background: var(--diff-del); color: #c99; }
 .toast {
   position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  max-width: calc(100% - 24px); flex-wrap: wrap;
   background: #152018; border: 1px solid var(--green-mid); color: var(--text);
-  padding: 10px 14px; border-radius: 8px; display: flex; align-items: center; gap: 12px;
-  font-size: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.45); z-index: 50; white-space: nowrap;
+  padding: 10px 14px; border-radius: 8px; display: flex; align-items: center; gap: 10px;
+  font-size: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.45); z-index: 50;
 }
 .modal-backdrop {
   position: absolute; inset: 0; background: rgba(0,0,0,0.55);
